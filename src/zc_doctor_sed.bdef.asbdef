@@ -1,0 +1,19 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_DOCTOR_SED alias Doctor
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Appointment { create; }
+}
+
+define behavior for ZC_APPOINT_SED alias Appointment
+{
+  use update;
+  use delete;
+
+  use association _Doctor;
+}

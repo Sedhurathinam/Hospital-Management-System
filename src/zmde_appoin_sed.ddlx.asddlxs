@@ -1,0 +1,83 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName: 'Appointment',
+    typeNamePlural: 'Appointments',
+    title: {
+      type: #STANDARD,
+      value: 'Appointmentid'
+    },
+    description: {
+      value: 'Patientname'
+    }
+  }
+}
+
+annotate entity ZC_APPOINT_SED with
+{
+  @UI.facet: [
+    {
+      id: 'AppointmentDetails',
+      purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Appointment Details',
+      position: 10
+    }
+  ]
+
+  @UI: {
+    lineItem: [
+      { position: 10, label: 'Appointment ID' }
+    ],
+    identification: [
+      { position: 10, label: 'Appointment ID' }
+    ]
+  }
+  @EndUserText.label: 'Appointment ID'
+  Appointmentid;
+
+  @UI: {
+    lineItem: [
+      { position: 20, label: 'Doctor ID' }
+    ],
+    identification: [
+      { position: 20, label: 'Doctor ID' }
+    ]
+  }
+  @EndUserText.label: 'Doctor ID'
+  Doctorid;
+
+  @UI: {
+    lineItem: [
+      { position: 30, label: 'Patient Name' }
+    ],
+    identification: [
+      { position: 30, label: 'Patient Name' }
+    ]
+  }
+  @EndUserText.label: 'Patient Name'
+  Patientname;
+
+  @UI: {
+    lineItem: [
+      { position: 40, label: 'Appointment Date' }
+    ],
+    identification: [
+      { position: 40, label: 'Appointment Date' }
+    ]
+  }
+  @EndUserText.label: 'Appointment Date'
+  Appointmentdate;
+
+  @UI: {
+    lineItem: [
+      { position: 50, label: 'Status' }
+    ],
+    identification: [
+      { position: 50, label: 'Status' }
+    ]
+  }
+  @EndUserText.label: 'Appointment Status'
+  Status;
+}

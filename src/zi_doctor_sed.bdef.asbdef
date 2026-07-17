@@ -1,0 +1,56 @@
+managed implementation in class zbp_i_doctor_sed unique;
+strict ( 2 );
+
+define behavior for ZI_DOCTOR_SED alias Doctor
+persistent table zsed_doctor
+lock master
+authorization master ( none )
+{
+
+  create;
+  update;
+  delete;
+
+  field ( mandatory : create ) Doctorid;
+  field ( readonly : update ) Doctorid;
+
+  association _Appointment { create; }
+
+  mapping for zsed_doctor
+  {
+    Doctorid       = doctorid;
+    Doctorname     = doctorname;
+    Specialization = specialization;
+    Phone          = phone;
+  }
+
+}
+
+define behavior for ZI_APPOINT_SED alias Appointment
+persistent table zsed_appoint
+lock dependent by _Doctor
+authorization dependent by _Doctor
+{
+
+
+  update;
+  delete;
+
+
+
+  field ( mandatory : create ) Appointmentid;
+  field ( readonly : update ) Appointmentid;
+  field ( readonly ) Doctorid;
+
+  association _Doctor;
+
+  mapping for zsed_appoint
+  {
+    Appointmentid   = appointmentid;
+    Doctorid        = doctorid;
+    Patientname     = patientname;
+    Appointmentdate = appointmentdate;
+    Status          = status;
+  }
+
+}

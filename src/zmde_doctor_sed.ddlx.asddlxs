@@ -1,0 +1,80 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName: 'Doctor',
+    typeNamePlural: 'Doctors',
+    title: {
+      type: #STANDARD,
+      value: 'Doctorname'
+    },
+    description: {
+      value: 'Doctorid'
+    }
+  }
+}
+
+annotate entity ZC_DOCTOR_SED with
+{
+  @UI.facet: [
+    {
+      id: 'DoctorDetails',
+      purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Doctor Details',
+      position: 10
+    },
+    {
+      id: 'AppointmentDetails',
+      purpose: #STANDARD,
+      type: #LINEITEM_REFERENCE,
+      label: 'Appointment Details',
+      position: 20,
+      targetElement: '_Appointment'
+    }
+  ]
+
+  @UI: {
+    lineItem: [
+      { position: 10, label: 'Doctor ID' }
+    ],
+    identification: [
+      { position: 10, label: 'Doctor ID' }
+    ]
+  }
+  @EndUserText.label: 'Doctor ID'
+  Doctorid;
+
+  @UI: {
+    lineItem: [
+      { position: 20, label: 'Doctor Name' }
+    ],
+    identification: [
+      { position: 20, label: 'Doctor Name' }
+    ]
+  }
+  @EndUserText.label: 'Doctor Name'
+  Doctorname;
+
+  @UI: {
+    lineItem: [
+      { position: 30, label: 'Specialization' }
+    ],
+    identification: [
+      { position: 30, label: 'Specialization' }
+    ]
+  }
+  @EndUserText.label: 'Specialization'
+  Specialization;
+
+  @UI: {
+    lineItem: [
+      { position: 40, label: 'Phone Number' }
+    ],
+    identification: [
+      { position: 40, label: 'Phone Number' }
+    ]
+  }
+  @EndUserText.label: 'Phone Number'
+  Phone;
+}

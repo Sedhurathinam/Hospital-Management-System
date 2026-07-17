@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for Doctor'
+define service ZSD_Doctor_SED {
+  expose ZC_DOCTOR_SED;
+  expose ZC_APPOINT_SED;
+}
